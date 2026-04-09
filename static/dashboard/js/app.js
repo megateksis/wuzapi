@@ -1194,6 +1194,7 @@ function populateInstances(instances) {
                 <div class="ui fluid card" id="instance-card-${instance.id}">
                     <div class="content">
                         <div class="header">${instance.name}</div>
+                        <div class="meta">Número: ${instance.number || 'N/A'}</div>
                         <div class="meta">ID: ${instance.id}</div>
                         <div class="description">
                             <div class="ui labels" style="margin-top: 0.5em;">
