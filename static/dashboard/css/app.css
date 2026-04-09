@@ -54,7 +54,7 @@ body.dark-theme .ui.header {
   height: 26px !important;
   padding: 0 !important;
   margin: 0 !important; /* Ensure no default margin interferes with gap */
-  margin-right: 0 !important; /* Explicitly remove right margin */
+  margin-right: 10px !important; /* Explicitly remove right margin */
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
