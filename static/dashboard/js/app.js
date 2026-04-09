@@ -927,6 +927,14 @@ function showWidgets() {
     document.querySelectorAll('.widget').forEach(widget => {
         widget.classList.remove('hidden');
     });
+
+    // Load configurations for the current instance
+    loadS3Config();
+    loadProxyConfig();
+    loadWebhookConfig();
+    loadHistoryConfig();
+    loadHmacConfig();
+    // Add calls for other widget loading functions here if they exist
 }
 
 function hideWidgets() {
@@ -1016,6 +1024,46 @@ async function getWebhook(token='') {
     } catch (error) {
         return '{}';
         throw error;
+    }
+}
+
+async function loadWebhookConfig() {
+    // Check if we have instance data available (admin viewing specific instance)
+    if (currentInstanceData && currentInstanceData.webhook) {
+        const webhookUrl = currentInstanceData.webhook;
+        const events = currentInstanceData.events ? currentInstanceData.events.split(',') : [];
+
+        $('#webhookinput').val(webhookUrl);
+        $('#webhookEvents').dropdown('set selected', events);
+        return;
+    }
+
+    // Fallback to API call for regular users or when instance data is not available
+    const token = getLocalStorageItem('token');
+    const myHeaders = new Headers();
+    myHeaders.append('token', token);
+
+    try {
+        const res = await fetch(baseUrl + "/webhook", {
+            method: "GET",
+            headers: myHeaders
+        });
+
+        if (res.ok) {
+            const data = await res.json();
+            if (data.code === 200 && data.data) {
+                $('#webhookinput').val(data.data.webhook || '');
+                $('#webhookEvents').dropdown('set selected', data.data.subscribe || []);
+            } else {
+                // No config found, set defaults
+                $('#webhookinput').val('');
+                $('#webhookEvents').dropdown('set selected', []);
+            }
+        }
+    } catch (error) {
+        console.error('Error loading webhook config:', error);
+        $('#webhookinput').val('');
+        $('#webhookEvents').dropdown('set selected', []);
     }
 }
 
