@@ -1246,7 +1246,7 @@ function filterAndRenderInstances() {
                         </div>
                     </div>
                     <div class="extra content">
-                        <div class="ui two buttons">
+                        <div class="ui buttons">
                             <button class="ui circular icon button primary" data-tooltip="Editar" data-position="top center" onclick="openDashboard('${instance.id}', '${instance.token}')">
                                 <i class="edit icon"></i>
                             </button>
