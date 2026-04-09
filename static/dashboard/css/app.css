@@ -50,8 +50,8 @@ body.dark-theme .ui.header {
 }
 
 .ui.circular.icon.button {
-  width: 38px !important;
-  height: 38px !important;
+  width: 26px !important;
+  height: 26px !important;
   padding: 0 !important;
   display: flex !important;
   align-items: center !important;
@@ -125,8 +125,15 @@ body.dark-theme .ui.header {
 }
 
 .ui.circular.icon.button i.icon {
-  font-size: 1.1em !important;
+  font-size: 0.9em !important;
   margin: 0 !important;
+}
+
+.ui.cards > .card .extra.content .ui.two.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px; /* Spacing between buttons */
 }
 
 body.dark-theme .ui.cards > .card {
