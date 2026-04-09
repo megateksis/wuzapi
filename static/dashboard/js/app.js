@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             .catch((error) => {
                                 // Error case
                                 document.getElementById('pairInfo').innerHTML = "Problem getting pairing code";
-                                console.error('Pairing error:', error);
+            
                             });
                     }
                 });
@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("deleteMessageContainer").classList.add('hidden');
         $('#modalDeleteMessage').modal({onApprove: function() {
                 deleteMessage().then((result)=>{
-                    console.log(result);
+
                     document.getElementById("deleteMessageContainer").classList.remove('hidden');
                     if(result.success===true) {
                         document.getElementById('deleteMessageContainer').innerHTML=`Message deleted successfully.`
@@ -509,9 +509,7 @@ document.addEventListener('DOMContentLoaded', function() {
     $('#instance-status-filter').dropdown({
         onChange: function(value, text, $selectedItem) {
             filterAndRenderInstances();
-        },
-        // Set default value to 'all'
-        set selected: 'all'
+        }
     });
 
     // Event listener for search input
@@ -523,7 +521,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 async function addInstance(data) {
-    console.log("Add Instance...");
+
     const admintoken = getLocalStorageItem('admintoken');
     const myHeaders = new Headers();
     myHeaders.append('authorization', admintoken);
@@ -568,7 +566,7 @@ async function addInstance(data) {
         hmacKey: hmacKey
     };
 
-    console.log("Payload being sent:", payload);
+
 
     res = await fetch(baseUrl + "/admin/users", {
         method: "POST",
@@ -577,7 +575,7 @@ async function addInstance(data) {
     });
 
     const responseData = await res.json();
-    console.log("Response:", responseData);
+
     return responseData;
 }
 
@@ -619,13 +617,13 @@ function modalPairPhone() {
 }
 
 function handleRegularLogin(token,notifications=false) {
-    console.log('Regular login with token:', token);
+
     setLocalStorageItem('token', token, 6);
     removeLocalStorageItem('isAdmin');
     $('.adminlogin').hide();
     statusRequest().then((status) => {
         if(status.success==true) {
-            console.log(status.data);
+
             setLocalStorageItem('currentInstance', status.data.id, 6);
             // Save current user JID for groups functionality
             if(status.data.jid) {
@@ -688,7 +686,7 @@ function updateAdmin() {
 }
 
 function handleAdminLogin(token,notifications=false) {
-    console.log('Admin login with token:', token);
+
     setLocalStorageItem('admintoken', token, 6);
     setLocalStorageItem('isAdmin', true, 6);
     $('.adminlogin').show();
@@ -752,7 +750,7 @@ function deleteInstance(id) {
 }
 
 async function performDelete(id) {
-    console.log('Deleting instance with ID:', id);
+
     const admintoken = getLocalStorageItem('admintoken');
     const myHeaders = new Headers();
     myHeaders.append('authorization', admintoken);
@@ -783,7 +781,7 @@ function openDashboard(id,token) {
     setLocalStorageItem('currentInstance', id, 6);
     setLocalStorageItem('token', token, 6);
     $(`#instance-card-${id}`).removeClass('hidden');
-    console.log($(`#instance-card-${id}`));
+
     showWidgets();
     $('.admingrid').addClass('hidden');
     $('.maingrid').removeClass('hidden');
@@ -873,7 +871,7 @@ function doUserAvatar() {
             }
         }).catch(error => {
             document.getElementById('userAvatarContainer').innerHTML = 'Error fetching user avatar';
-            console.error('Error:', error);
+
         });
     }
 }
@@ -909,7 +907,7 @@ function doUserInfo() {
             }
         }).catch(error => {
             document.getElementById('userInfoContainer').innerHTML = 'Error fetching user info';
-            console.error('Error:', error);
+
         });
     }
 }
@@ -927,7 +925,7 @@ function hideWidgets() {
 }
 
 async function connect(token='') {
-    console.log("Connecting...");
+
     if(token=='') {
         token = getLocalStorageItem('token');
     }
@@ -961,7 +959,7 @@ async function disconnect(token) {
 }
 
 async function status() {
-    console.log("Get status...");
+
     const token = getLocalStorageItem('token');
     const myHeaders = new Headers();
     myHeaders.append('token', token);
@@ -976,7 +974,7 @@ async function status() {
 }
 
 async function getUsers() {
-    console.log("Get users...");
+
     const admintoken = getLocalStorageItem('admintoken');
     const myHeaders = new Headers();
     myHeaders.append('authorization', admintoken);
@@ -990,7 +988,7 @@ async function getUsers() {
 }
 
 async function getWebhook(token='') {
-    console.log("Getting webhook...");
+
     if(token=='') {
         token = getLocalStorageItem('token');
     }
@@ -1011,7 +1009,7 @@ async function getWebhook(token='') {
 }
 
 async function getContacts() {
-    console.log("Getting contacts...");
+
     const token = getLocalStorageItem('token');
     const myHeaders = new Headers();
     myHeaders.append('token', token);
@@ -1040,7 +1038,7 @@ async function getContacts() {
 }
 
 async function userAvatar(phone) {
-    console.log("Requesting user avatar...");
+
     const token = getLocalStorageItem('token');
     const myHeaders = new Headers();
     myHeaders.append('token', token);
@@ -1055,7 +1053,7 @@ async function userAvatar(phone) {
 }
 
 async function userInfo(phone) {
-    console.log("Requesting user info...");
+
     const token = getLocalStorageItem('token');
     const myHeaders = new Headers();
     myHeaders.append('token', token);
@@ -1070,7 +1068,7 @@ async function userInfo(phone) {
 }
 
 async function pairPhone(phone) {
-    console.log("Requesting pairing code...");
+
     const token = getLocalStorageItem('token');
     const myHeaders = new Headers();
     myHeaders.append('token', token);
@@ -1085,7 +1083,7 @@ async function pairPhone(phone) {
 }
 
 async function logout(token='') {
-    console.log("Login out...");
+
     if(token=='') {
         token = getLocalStorageItem('token');
     }
