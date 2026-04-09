@@ -6,6 +6,7 @@ let updateInterval = 5000;
 let instanceToDelete = null;
 let isAdminLogin = false;
 let currentInstanceData = null;
+let allInstances = []; // Global variable to store all instances
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -502,9 +503,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Initialize tooltips for circular icon buttons
-  $('.ui.circular.icon.button').popup();
+    $('.ui.circular.icon.button').popup();
 
-  init();
+    // Initialize status filter dropdown
+    $('#instance-status-filter').dropdown({
+        onChange: function(value, text, $selectedItem) {
+            filterAndRenderInstances();
+        }
+    });
+
+    // Event listener for search input
+    $('#instance-search-input').on('keyup', function() {
+        filterAndRenderInstances();
+    });
+
+    init();
 });
 
 async function addInstance(data) {
@@ -1179,16 +1192,39 @@ function init() {
 }
 
 function populateInstances(instances) {
+    allInstances = instances; // Store all fetched instances globally
+    filterAndRenderInstances(); // Filter and render based on current criteria
+}
+
+function filterAndRenderInstances() {
     const cardsContainer = $('#instances-cards-container');
     cardsContainer.empty();
     const currentInstance = getLocalStorageItem('currentInstance');
 
-    if (instances.length === 0) {
+    const searchText = $('#instance-search-input').val().toLowerCase();
+    const statusFilter = $('#instance-status-filter').dropdown('get value');
+
+    const filteredInstances = allInstances.filter(instance => {
+        const matchesSearch = searchText === '' ||
+                              instance.name.toLowerCase().includes(searchText) ||
+                              (instance.number && instance.number.toLowerCase().includes(searchText)) ||
+                              instance.id.toLowerCase().includes(searchText);
+
+        const matchesStatus = statusFilter === 'all' ||
+                              (statusFilter === 'connected' && instance.connected) ||
+                              (statusFilter === 'disconnected' && !instance.connected) ||
+                              (statusFilter === 'loggedIn' && instance.loggedIn) ||
+                              (statusFilter === 'loggedOut' && !instance.loggedIn);
+
+        return matchesSearch && matchesStatus;
+    });
+
+    if (filteredInstances.length === 0) {
         cardsContainer.append('<div class="ui placeholder segment"><div class="ui icon header"><i class="database icon"></i>Nenhuma instância encontrada.</div></div>');
         return;
     }
 
-    instances.forEach(instance => {
+    filteredInstances.forEach(instance => {
         const card = `
             <div class="column">
                 <div class="ui fluid card" id="instance-card-${instance.id}">
@@ -1241,11 +1277,13 @@ function populateInstances(instances) {
         $(`#${showInstanceId}`).removeClass('hidden');
 
         // Store current instance data globally for use in modals
-        const currentInstanceObj = instances.find(inst => inst.id === currentInstance);
+        const currentInstanceObj = allInstances.find(inst => inst.id === currentInstance);
         if (currentInstanceObj) {
             currentInstanceData = currentInstanceObj;
         }
     }
+    // Re-initialize tooltips for newly rendered buttons
+    $('.ui.circular.icon.button').popup();
 }
 
 /**

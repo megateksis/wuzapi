@@ -95,6 +95,33 @@
         </div>
       </div>
     </div>
+    <div class="ui segment mb-4">
+      <div class="ui two column stackable grid">
+        <div class="column">
+          <div class="ui fluid search">
+            <div class="ui icon input fluid">
+              <input class="prompt" type="text" placeholder="Pesquisar instâncias..." id="instance-search-input">
+              <i class="search icon"></i>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="ui fluid selection dropdown" id="instance-status-filter">
+            <input type="hidden" name="status">
+            <i class="dropdown icon"></i>
+            <div class="default text">Filtrar por Status</div>
+            <div class="menu">
+              <div class="item" data-value="all">Todos</div>
+              <div class="item" data-value="connected">Conectado</div>
+              <div class="item" data-value="disconnected">Desconectado</div>
+              <div class="item" data-value="loggedIn">Logado</div>
+              <div class="item" data-value="loggedOut">Deslogado</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="ui mb-4">
       <div class="ui active inverted dimmer" id="loading">
         <div class="ui text loader">Carregando instâncias...</div>
