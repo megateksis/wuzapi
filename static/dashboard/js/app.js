@@ -509,7 +509,9 @@ document.addEventListener('DOMContentLoaded', function() {
     $('#instance-status-filter').dropdown({
         onChange: function(value, text, $selectedItem) {
             filterAndRenderInstances();
-        }
+        },
+        // Set default value to 'all'
+        set selected: 'all'
     });
 
     // Event listener for search input
