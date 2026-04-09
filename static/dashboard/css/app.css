@@ -10,6 +10,7 @@
   --message-background: #FFFFFF;
   --success-green: #00A884;
   --gradient-primary: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  --primary-color-rgb: 0, 168, 132;
 }
 
 body.dark-theme {
@@ -24,6 +25,7 @@ body.dark-theme {
   --message-background: #1f2c34;
   --success-green: #00A884;
   --gradient-primary: linear-gradient(135deg, #128c7e 0%, #075E54 100%);
+  --primary-color-rgb: 7, 94, 84;
 }
 
 body.dark-theme .menu-header {
@@ -47,16 +49,97 @@ body.dark-theme .ui.header {
   color: var(--text-color) !important;
 }
 
+.ui.circular.icon.button {
+  width: 38px !important;
+  height: 38px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  background-color: transparent !important;
+  border: 2px solid var(--primary-color) !important;
+  color: var(--primary-color) !important;
+  box-shadow: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.ui.circular.icon.button:hover {
+  background-color: rgba(var(--primary-color-rgb), 0.1) !important;
+  transform: translateY(-2px) scale(1.05) !important;
+  box-shadow: 0 4px 12px rgba(var(--primary-color-rgb), 0.3) !important;
+}
+
+.ui.circular.icon.button.primary {
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+}
+
+.ui.circular.icon.button.primary:hover {
+  background-color: rgba(var(--primary-color-rgb), 0.1) !important;
+}
+
+.ui.circular.icon.button.negative {
+  border-color: #db2828 !important;
+  color: #db2828 !important;
+}
+
+.ui.circular.icon.button.negative:hover {
+  background-color: rgba(219, 40, 40, 0.1) !important;
+}
+
+.ui.circular.icon.button.green {
+  border-color: #21ba45 !important;
+  color: #21ba45 !important;
+}
+
+.ui.circular.icon.button.green:hover {
+  background-color: rgba(33, 186, 69, 0.1) !important;
+}
+
+.ui.circular.icon.button.orange {
+  border-color: #f2711c !important;
+  color: #f2711c !important;
+}
+
+.ui.circular.icon.button.orange:hover {
+  background-color: rgba(242, 113, 28, 0.1) !important;
+}
+
+.ui.circular.icon.button.blue {
+  border-color: #2185d0 !important;
+  color: #2185d0 !important;
+}
+
+.ui.circular.icon.button.blue:hover {
+  background-color: rgba(33, 133, 208, 0.1) !important;
+}
+
+.ui.circular.icon.button.purple {
+  border-color: #a333c8 !important;
+  color: #a333c8 !important;
+}
+
+.ui.circular.icon.button.purple:hover {
+  background-color: rgba(163, 51, 200, 0.1) !important;
+}
+
+.ui.circular.icon.button i.icon {
+  font-size: 1.1em !important;
+  margin: 0 !important;
+}
+
 body.dark-theme .ui.cards > .card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
-  background-color: var(--message-background) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(31, 44, 52, 0.6) !important; /* Darker, semi-transparent background */
+  backdrop-filter: blur(20px) saturate(180%); /* Glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important; /* Stronger shadow for depth */
+  color: #E0E0E0 !important;
 }
 
 body.dark-theme .ui.cards > .card:not(.no-hover):hover {
-  transform: translateY(-8px) !important;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3) !important;
-  background-color: var(--card-hover-color) !important;
+  background-color: rgba(31, 44, 52, 0.8) !important; /* Slightly less transparent on hover */
+  box-shadow: 0 16px 48px 0 rgba(0, 0, 0, 0.45) !important;
 }
 
 body.dark-theme .ui.horizontal.divider {
