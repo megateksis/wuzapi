@@ -787,6 +787,10 @@ function openDashboard(id, token) {
         $('#editInstanceName').text(instance.name); // Set modal header
     }
 
+    // Pause background updates while modal is open
+    clearTimeout(updateAdminTimeout);
+    clearTimeout(updateUserTimeout);
+
     showWidgets();
     $('#modalEditInstance').modal('show');
 }
@@ -795,9 +799,18 @@ function goBackToList() {
     $('#modalEditInstance').modal('hide');
     removeLocalStorageItem('currentInstance');
     currentInstanceData = null; // Clear instance data
-    updateAdmin();
     removeLocalStorageItem('token');
     hideWidgets();
+
+    // Reset search and filter
+    $('#instance-search-input').val('');
+    $('#instance-status-filter').dropdown('set selected', 'all');
+
+    // Re-render all instances
+    filterAndRenderInstances();
+
+    // Restart background updates
+    updateAdmin();
 }
 
 async function sendTextMessage() {
