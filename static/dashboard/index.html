@@ -16,34 +16,36 @@
         <div class="content">
           <div class="center aligned mb-4">
             <i class="whatsapp icon bi-whatsapp"></i> 
-            <h2 class="ui header">WuzAPI Manager</h2>
-            <p class="text-muted">Log in to access the dashboard</p>
+            <h2 class="ui header">Gerenciador WuzAPI</h2>
+            <p class="text-muted">Faça login para acessar o painel</p>
           </div>
           <form id="loginForm" class="ui form mb-4">
             <div class="field mb-4" style="text-align:left;">
-              <label for="loginToken">Access Token</label>
-              <input type="text" id="loginToken" placeholder="Type your access token">
+              <label for="loginToken">Token de Acesso</label>
+              <input type="text" id="loginToken" placeholder="Digite seu token de acesso">
               <div class="ui description">
-                  Token used to authenticate your requests to the API.
+            Você pode obter o link de convite completo do WhatsApp ou apenas o código de convite de 22 caracteres.
+          </div>
+                  Token usado para autenticar suas requisições à API.
               </div>
             </div>
             <div class="ui fluid buttons">
               <button type="submit" class="ui primary button" id="regularLoginBtn">
-                <i class="sign-in icon"></i>Login
+                <i class="sign-in icon"></i>Entrar
               </button>
               <div class="or"></div>
               <button type="button" class="ui button" id="loginAsAdminBtn">
-                <i class="shield alternate icon"></i>Admin Login
+                <i class="shield alternate icon"></i>Login Admin
               </button>
             </div>
           </form>
           <div class="ui info message" style="text-align:left;">
             <div class="header mb-4">
-              <i class="user icon"></i> User Login
+              <i class="user icon"></i> Login de Usuário
             </div>
-            <p>Please enter user credentials:</p>
+            <p>Por favor, insira as credenciais do usuário:</p>
             <ul>
-              <li>Use your user token in the field above</li>
+              <li>Use seu token de usuário no campo acima</li>
             </ul>
           </div>
         </div>
@@ -56,7 +58,7 @@
     <div class="ui container fluid secondary pointing">
       <a href="#" class="header item">
         <span class='title-container'>
-          <i class="whatsapp icon"></i> WuzAPI Manager
+          <i class="whatsapp icon"></i> Gerenciador WuzAPI
         </span>
       </a>
       <div class="right menu">
@@ -65,7 +67,7 @@
           <span id="user-role-text">...</span>
         </div>
         <div class="item">
-          <a href='#' id='menulogout'>Logout</a></div>
+          <a href='#' id='menulogout'>Sair</a></div>
         </div>
       </div>
     </div>
@@ -89,16 +91,16 @@
     </div>
     <div class="ui mb-4">
       <div class="ui active inverted dimmer" id="loading">
-        <div class="ui text loader">Loading instances...</div>
+        <div class="ui text loader">Carregando instâncias...</div>
       </div>
       <table class="ui celled table" id="instances-table">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Connected</th>
-            <th>Logged In</th>
-            <th>Actions</th>
+            <th>Nome</th>
+            <th>Conectado</th>
+            <th>Logado</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody id="instances-body"></tbody>
@@ -111,7 +113,7 @@
     <div class="ui stackable cards" id="instances-cards"></div>
     <div class="ui right aligned basic segment adminlogin">
       <button class="ui secondary button" onclick="goBackToList()">
-        <i class="left arrow icon"></i> Go Back
+        <i class="left arrow icon"></i> Voltar
       </button>
     </div>
   </div>
@@ -119,97 +121,97 @@
   <!-- Dashboard -->
   <div class="ui container fluid p1 hidden maingrid" id="mainDashboard">
 
-    <div class="ui horizontal divider widget"> Configuration </div>
+    <div class="ui horizontal divider widget"> Configuração </div>
     <div class="ui three column stackable grid cards">
       <div class="purple card hidden widget" style="cursor: pointer;" id="s3Config">
         <div class="content"><a class="ui purple right ribbon label">Config</a>
-          <div class="header">S3 Storage</div>
-          <div class="description">Configure S3-compatible storage for media files.</div>
+          <div class="header">Armazenamento S3</div>
+          <div class="description">Configure o armazenamento compatível com S3 para arquivos de mídia.</div>
         </div>
       </div>
       <div class="purple card hidden widget" style="cursor: pointer;" id="proxyConfig">
         <div class="content"><a class="ui purple right ribbon label">Config</a>
-          <div class="header">Proxy Settings</div>
-          <div class="description">Configure proxy for WhatsApp connections.</div>
+          <div class="header">Configurações de Proxy</div>
+          <div class="description">Configure o proxy para conexões do WhatsApp.</div>
         </div>
       </div>
       <div class="purple card hidden widget" style="cursor: pointer;" id="webhookConfig">
         <div class="content"><a class="ui purple right ribbon label">Config</a>
-          <div class="header">Webhook Events</div>
-          <div class="description">Configure webhook URL and event subscriptions.</div>
+          <div class="header">Eventos de Webhook</div>
+          <div class="description">Configure a URL do webhook e as assinaturas de eventos.</div>
         </div>
       </div>
       <div class="purple card hidden widget" style="cursor: pointer;" id="historyConfig">
         <div class="content"><a class="ui purple right ribbon label">Config</a>
-          <div class="header">Message History</div>
-          <div class="description">Configure message history.</div>
+          <div class="header">Histórico de Mensagens</div>
+          <div class="description">Configure o histórico de mensagens.</div>
         </div>
       </div>
       <div class="purple card hidden widget" style="cursor: pointer;" id="hmacConfig">
         <div class="content"><a class="ui purple right ribbon label">Config</a>
-          <div class="header">HMAC Key</div>
-          <div class="description">Configure HMAC key for webhook security.</div>
+          <div class="header">Chave HMAC</div>
+          <div class="description">Configure a chave HMAC para segurança do webhook.</div>
         </div>
       </div>
     </div>
 
-    <div class="ui horizontal divider widget"> User </div>
+    <div class="ui horizontal divider widget"> Usuário </div>
     <div class="ui three column stackable grid cards">
       <div class="red card hidden widget" style="cursor: pointer;" id="userInfo">
-        <div class="content"><a class="ui red right ribbon label">User</a>
-          <div class="header">User Info</div>
-          <div class="description"> Search users by phone number.</div>
+        <div class="content"><a class="ui red right ribbon label">Usuário</a>
+          <div class="header">Informações do Usuário</div>
+          <div class="description"> Pesquise usuários por número de telefone.</div>
         </div>
       </div>
       <div class="red card hidden widget" style="cursor: pointer;" id="userAvatar">
-        <div class="content"><a class="ui red right ribbon label">User</a>
-          <div class="header">User Avatar</div>
-          <div class="description"> Get user Avatar by phone number.</div>
+        <div class="content"><a class="ui red right ribbon label">Usuário</a>
+          <div class="header">Avatar do Usuário</div>
+          <div class="description"> Obtenha o Avatar do usuário por número de telefone.</div>
         </div>
       </div>
       <div class="red card hidden widget" style="cursor: pointer;" id="userContacts">
-        <div class="content"><a class="ui red right ribbon label">User</a>
-          <div class="header">Get Contacts</div>
-          <div class="description"> Get all contacts.</div>
+        <div class="content"><a class="ui red right ribbon label">Usuário</a>
+          <div class="header">Obter Contatos</div>
+          <div class="description"> Obtenha todos os contatos.</div>
         </div>
       </div>
     </div>
 
-    <div class="ui horizontal divider widget"> Chat </div>
+    <div class="ui horizontal divider widget"> Conversa </div>
 
     <div class="ui three column stackable grid cards">
       <div class="blue card hidden widget" style="cursor: pointer;" id="sendTextMessage">
-        <div class="content"><a class="ui blue right ribbon label">Chat</a>
-          <div class="header">Send Text Message</div>
-          <div class="description"> Sends a text message.</div>
+        <div class="content"><a class="ui blue right ribbon label">Conversa</a>
+          <div class="header">Enviar Mensagem de Texto</div>
+          <div class="description"> Envia uma mensagem de texto.</div>
         </div>
       </div>
       <div class="blue card hidden widget" style="cursor: pointer;" id="deleteMessage">
-        <div class="content"><a class="ui blue right ribbon label">Chat</a>
-          <div class="header">Delete Message</div>
-          <div class="description"> Deletes your sent message.</div>
+        <div class="content"><a class="ui blue right ribbon label">Conversa</a>
+          <div class="header">Excluir Mensagem</div>
+          <div class="description"> Exclui sua mensagem enviada.</div>
         </div>
       </div>
     </div>
 
-    <div class="ui horizontal divider widget"> Groups </div>
+    <div class="ui horizontal divider widget"> Grupos </div>
     <div class="ui three column stackable grid cards">
       <div class="green card hidden widget" style="cursor: pointer;" id="groupsList">
-        <div class="content"><a class="ui green right ribbon label">Groups</a>
-          <div class="header">List Groups</div>
-          <div class="description">View all your WhatsApp groups.</div>
+        <div class="content"><a class="ui green right ribbon label">Grupos</a>
+          <div class="header">Listar Grupos</div>
+          <div class="description">Visualize todos os seus grupos do WhatsApp.</div>
         </div>
       </div>
       <div class="green card hidden widget" style="cursor: pointer;" id="createGroup">
-        <div class="content"><a class="ui green right ribbon label">Groups</a>
-          <div class="header">Create Group</div>
-          <div class="description">Create a new WhatsApp group.</div>
+        <div class="content"><a class="ui green right ribbon label">Grupos</a>
+          <div class="header">Criar Grupo</div>
+          <div class="description">Crie um novo grupo do WhatsApp.</div>
         </div>
       </div>
       <div class="green card hidden widget" style="cursor: pointer;" id="joinGroup">
-        <div class="content"><a class="ui green right ribbon label">Groups</a>
-          <div class="header">Join Group</div>
-          <div class="description">Join a group using invite link.</div>
+        <div class="content"><a class="ui green right ribbon label">Grupos</a>
+          <div class="header">Entrar no Grupo</div>
+          <div class="description">Entre em um grupo usando o link de convite.</div>
         </div>
       </div>
     </div>
@@ -226,14 +228,14 @@
             <h1 class="ui header">
               <i class="users icon"></i>
               <div class="content">
-                Groups Manager
-                <div class="sub header">Manage your WhatsApp groups</div>
+                Gerenciador de Grupos
+                <div class="sub header">Gerencie seus grupos do WhatsApp</div>
               </div>
             </h1>
           </div>
           <div class="right floated right aligned six wide column">
             <button class="ui primary button" id="backToDashboard">
-              <i class="left arrow icon"></i> Back to Dashboard
+              <i class="left arrow icon"></i> Voltar ao Painel
             </button>
           </div>
         </div>
@@ -245,28 +247,28 @@
       <div class="ui stackable grid">
         <div class="six wide column">
           <div class="ui icon input fluid">
-            <input type="text" id="groupsSearch" placeholder="Search groups by name or description...">
+            <input type="text" id="groupsSearch" placeholder="Pesquisar grupos por nome ou descrição...">
             <i class="search icon"></i>
           </div>
         </div>
         <div class="four wide column">
           <select class="ui fluid dropdown" id="groupsFilter">
-            <option value="">All Groups</option>
-            <option value="normal">Normal Groups</option>
-            <option value="community">Communities</option>
-            <option value="community_group">Community Groups</option>
+            <option value="">Todos os Grupos</option>
+            <option value="normal">Grupos Normais</option>
+            <option value="community">Comunidades</option>
+            <option value="community_group">Grupos da Comunidade</option>
           </select>
         </div>
         <div class="three wide column">
           <div class="ui basic buttons fluid">
             <button class="ui button" id="refreshGroups">
-              <i class="refresh icon"></i> Refresh
+              <i class="refresh icon"></i> Atualizar
             </button>
           </div>
         </div>
         <div class="three wide column">
           <button class="ui green button fluid" id="createNewGroup">
-            <i class="plus icon"></i> Create Group
+            <i class="plus icon"></i> Criar Grupo
           </button>
         </div>
       </div>
@@ -274,7 +276,7 @@
 
     <!-- Groups Loading -->
     <div class="ui active inverted dimmer" id="groupsLoading">
-      <div class="ui text loader">Loading groups...</div>
+      <div class="ui text loader">Carregando grupos...</div>
     </div>
 
     <!-- Groups List Container -->
@@ -286,10 +288,10 @@
     <div class="ui placeholder segment hidden" id="noGroupsMessage">
       <div class="ui icon header">
         <i class="users icon"></i>
-        No groups found
+        Nenhum grupo encontrado
       </div>
       <div class="inline">
-        <div class="ui primary button" id="createFirstGroup">Create your first group</div>
+        <div class="ui primary button" id="createFirstGroup">Crie seu primeiro grupo</div>
       </div>
     </div>
   </div>
@@ -297,18 +299,18 @@
   <!-- Session Modals -->
 
   <div class="ui modal" id="modalLoginWithCode"><i class="close icon"></i>
-    <div class="header"> Getting Pair Code </div>
+    <div class="header"> Obtendo Código de Pareamento </div>
     <div class="content">
       <div class="ui message info">
-        <div class="header" id="pairInfo">How to pair?</div>
+        <div class="header" id="pairInfo">Como parear?</div>
         <ol id="pairHelp">
-          <li>Open your Whatsapp</li>
-          <li>Link a device</li>
-          <li>Link with pair code</li>
+          <li>Abra seu Whatsapp</li>
+          <li>Vincule um aparelho</li>
+          <li>Vincule com o código de pareamento</li>
         </ol>
       </div>
       <div class="ui form">
-        <div class="field"><label>Phone</label><input id="pairphoneinput" type="text" placeholder="Type your phone number"><small>Press Enter to submit</small></div>
+        <div class="field"><label>Telefone</label><input id="pairphoneinput" type="text" placeholder="Digite seu número de telefone"><small>Pressione Enter para enviar</small></div>
       </div>
     </div>
   </div>
@@ -320,70 +322,70 @@
     <div class="content">
       <div class="ui form">
         <div class="field">
-          <label>Webhook Events</label>
+          <label>Eventos do Webhook</label>
           <select id="webhookEvents" class="ui fluid dropdown" multiple="">
-            <option value="">Select Events</option>
+            <option value="">Selecionar Eventos</option>
             <!-- Messages and Communication -->
-            <option value="Message">Message</option>
-            <option value="UndecryptableMessage">Undecryptable Message</option>
-            <option value="Receipt">Receipt</option>
-            <option value="MediaRetry">Media Retry</option>
+            <option value="Message">Mensagem</option>
+            <option value="UndecryptableMessage">Mensagem Não Decifrável</option>
+            <option value="Receipt">Recibo</option>
+            <option value="MediaRetry">Tentativa de Mídia</option>
             <!-- Groups and Contacts -->
-            <option value="GroupInfo">Group Info</option>
-            <option value="JoinedGroup">Joined Group</option>
-            <option value="Picture">Picture</option>
-            <option value="BlocklistChange">Blocklist Change</option>
-            <option value="Blocklist">Blocklist</option>
+            <option value="GroupInfo">Informações do Grupo</option>
+            <option value="JoinedGroup">Entrou no Grupo</option>
+            <option value="Picture">Imagem</option>
+            <option value="BlocklistChange">Mudança na Lista de Bloqueio</option>
+            <option value="Blocklist">Lista de Bloqueio</option>
             <!-- Connection and Session -->
-            <option value="Connected">Connected</option>
-            <option value="Disconnected">Disconnected</option>
-            <option value="ConnectFailure">Connect Failure</option>
-            <option value="KeepAliveRestored">Keep Alive Restored</option>
-            <option value="KeepAliveTimeout">Keep Alive Timeout</option>
-            <option value="LoggedOut">Logged Out</option>
-            <option value="ClientOutdated">Client Outdated</option>
-            <option value="TemporaryBan">Temporary Ban</option>
-            <option value="StreamError">Stream Error</option>
-            <option value="StreamReplaced">Stream Replaced</option>
-            <option value="PairSuccess">Pair Success</option>
-            <option value="PairError">Pair Error</option>
+            <option value="Connected">Conectado</option>
+            <option value="Disconnected">Desconectado</option>
+            <option value="ConnectFailure">Falha na Conexão</option>
+            <option value="KeepAliveRestored">Keep Alive Restaurado</option>
+            <option value="KeepAliveTimeout">Tempo Limite do Keep Alive</option>
+            <option value="LoggedOut">Desconectado</option>
+            <option value="ClientOutdated">Cliente Desatualizado</option>
+            <option value="TemporaryBan">Banimento Temporário</option>
+            <option value="StreamError">Erro de Stream</option>
+            <option value="StreamReplaced">Stream Substituído</option>
+            <option value="PairSuccess">Pareamento Bem-sucedido</option>
+            <option value="PairError">Erro de Pareamento</option>
             <option value="QR">QR</option>
-            <option value="QRScannedWithoutMultidevice">QR Scanned Without Multidevice</option>
+            <option value="QRScannedWithoutMultidevice">QR Escaneado Sem Multidispositivo</option>
             <!-- Privacy and Settings -->
-            <option value="PrivacySettings">Privacy Settings</option>
-            <option value="PushNameSetting">Push Name Setting</option>
-            <option value="UserAbout">User About</option>
+            <option value="PrivacySettings">Configurações de Privacidade</option>
+            <option value="PushNameSetting">Configuração de Nome de Exibição</option>
+            <option value="UserAbout">Sobre o Usuário</option>
             <!-- Synchronization and State -->
-            <option value="AppState">App State</option>
-            <option value="AppStateSyncComplete">App State Sync Complete</option>
-            <option value="HistorySync">History Sync</option>
-            <option value="OfflineSyncCompleted">Offline Sync Completed</option>
-            <option value="OfflineSyncPreview">Offline Sync Preview</option>
+            <option value="AppState">Estado do Aplicativo</option>
+            <option value="AppStateSyncComplete">Sincronização do Estado do Aplicativo Concluída</option>
+            <option value="HistorySync">Sincronização do Histórico</option>
+            <option value="OfflineSyncCompleted">Sincronização Offline Concluída</option>
+            <option value="OfflineSyncPreview">Prévia da Sincronização Offline</option>
             <!-- Calls -->
-            <option value="CallOffer">Call Offer</option>
-            <option value="CallAccept">Call Accept</option>
-            <option value="CallTerminate">Call Terminate</option>
-            <option value="CallOfferNotice">Call Offer Notice</option>
-            <option value="CallRelayLatency">Call Relay Latency</option>
+            <option value="CallOffer">Oferta de Chamada</option>
+            <option value="CallAccept">Aceitar Chamada</option>
+            <option value="CallTerminate">Encerrar Chamada</option>
+            <option value="CallOfferNotice">Notificação de Oferta de Chamada</option>
+            <option value="CallRelayLatency">Latência de Retransmissão de Chamada</option>
             <!-- Presence and Activity -->
-            <option value="Presence">Presence</option>
-            <option value="ChatPresence">Chat Presence</option>
+            <option value="Presence">Presença</option>
+            <option value="ChatPresence">Presença no Chat</option>
             <!-- Identity -->
-            <option value="IdentityChange">Identity Change</option>
+            <option value="IdentityChange">Mudança de Identidade</option>
             <!-- Errors -->
-            <option value="CATRefreshError">CAT Refresh Error</option>
+            <option value="CATRefreshError">Erro de Atualização CAT</option>
             <!-- Newsletter (WhatsApp Channels) -->
-            <option value="NewsletterJoin">Newsletter Join</option>
-            <option value="NewsletterLeave">Newsletter Leave</option>
-            <option value="NewsletterMuteChange">Newsletter Mute Change</option>
-            <option value="NewsletterLiveUpdate">Newsletter Live Update</option>
+            <option value="NewsletterJoin">Entrar no Canal</option>
+            <option value="NewsletterLeave">Sair do Canal</option>
+            <option value="NewsletterMuteChange">Mudança de Silenciamento do Canal</option>
+            <option value="NewsletterLiveUpdate">Atualização ao Vivo do Canal</option>
             <!-- Facebook/Meta Bridge -->
-            <option value="FBMessage">FB Message</option>
+            <option value="FBMessage">Mensagem FB</option>
             <!-- Special -->
-            <option value="All">All Events</option>
+            <option value="All">Todos os Eventos</option>
           </select>
         </div>
-        <div class="field"><label>Webhook URL</label><input id="webhookinput" type="text" placeholder="Type webhook URL"></div>
+        <div class="field"><label>URL do Webhook</label><input id="webhookinput" type="text" placeholder="Digite a URL do webhook"></div>
       </div>
     <br>
     <br>
@@ -392,377 +394,377 @@
     <br>
     </div>
     <div class="actions">
-      <div class="ui cancel button secondary">Close</div>
-      <div class="ui positive right labeled icon button">Set<i class="checkmark icon"></i></div>
+      <div class="ui cancel button secondary">Fechar</div>
+      <div class="ui positive right labeled icon button">Definir<i class="checkmark icon"></i></div>
     </div>
   </div>
 
   <!-- S3 Configuration Modal -->
   <div class="ui modal" id="modalS3Config"><i class="close icon"></i>
-    <div class="header"> S3 Configuration </div>
+    <div class="header"> Configuração S3 </div>
     <div class="content">
       <div class="ui info message">
-        <div class="header">S3 Storage Configuration</div>
-        <p>Configure S3-compatible storage for media files. This includes AWS S3, MinIO, DigitalOcean Spaces, and other S3-compatible services.</p>
+        <div class="header">Configuração de Armazenamento S3</div>
+        <p>Configure o armazenamento compatível com S3 para arquivos de mídia. Isso inclui AWS S3, MinIO, DigitalOcean Spaces e outros serviços compatíveis com S3.</p>
       </div>
       <div class="ui form">
         <div class="field">
-          <label>S3 Endpoint URL</label>
-          <input id="s3Endpoint" type="text" placeholder="https://s3.amazonaws.com or custom endpoint">
-          <small>For AWS S3, use the default. For MinIO/others, use your custom endpoint.</small>
+          <label>URL do Endpoint S3</label>
+          <input id="s3Endpoint" type="text" placeholder="https://s3.amazonaws.com ou endpoint personalizado">
+          <small>Para AWS S3, use o padrão. Para MinIO/outros, use seu endpoint personalizado.</small>
         </div>
         <div class="field">
-          <label>Access Key ID</label>
-          <input id="s3AccessKey" type="text" placeholder="Your S3 access key ID">
+          <label>ID da Chave de Acesso</label>
+          <input id="s3AccessKey" type="text" placeholder="Seu ID da chave de acesso S3">
         </div>
         <div class="field">
-          <label>Secret Access Key</label>
-          <input id="s3SecretKey" type="password" placeholder="Your S3 secret access key">
+          <label>Chave Secreta de Acesso</label>
+          <input id="s3SecretKey" type="password" placeholder="Sua chave secreta de acesso S3">
         </div>
         <div class="field">
-          <label>Bucket Name</label>
-          <input id="s3Bucket" type="text" placeholder="Your S3 bucket name">
+          <label>Nome do Bucket</label>
+          <input id="s3Bucket" type="text" placeholder="Seu nome de bucket S3">
         </div>
         <div class="field">
-          <label>Region</label>
-          <input id="s3Region" type="text" placeholder="us-east-1 (optional for some providers)">
-          <small>Required for AWS S3. Optional for MinIO and other providers.</small>
+          <label>Região</label>
+          <input id="s3Region" type="text" placeholder="us-east-1 (opcional para alguns provedores)">
+          <small>Obrigatório para AWS S3. Opcional para MinIO e outros provedores.</small>
         </div>
         <div class="field">
-          <label>Public URL (Optional)</label>
+          <label>URL Pública (Opcional)</label>
           <input id="s3PublicUrl" type="text" placeholder="https://cdn.example.com">
-          <small>Public URL for accessing files (if different from endpoint).</small>
+          <small>URL pública para acessar arquivos (se diferente do endpoint).</small>
         </div>
         <div class="field">
-          <label>Media Delivery</label>
+          <label>Entrega de Mídia</label>
           <select class="ui dropdown" id="s3MediaDelivery">
-            <option value="base64">Base64 (Default)</option>
-            <option value="s3">S3 URL only</option>
-            <option value="both">Both Base64 and S3 URL</option>
+            <option value="base64">Base64 (Padrão)</option>
+            <option value="s3">Apenas URL S3</option>
+            <option value="both">Ambos Base64 e URL S3</option>
           </select>
-          <small>How media should be delivered in webhook events.</small>
+          <small>Como a mídia deve ser entregue em eventos de webhook.</small>
         </div>
         <div class="field">
-          <label>Retention Days</label>
+          <label>Dias de Retenção</label>
           <input id="s3RetentionDays" type="number" min="1" value="30" placeholder="30">
-          <small>Number of days to retain files in S3 before deletion.</small>
+          <small>Número de dias para reter arquivos no S3 antes da exclusão.</small>
         </div>
         <div class="field">
           <div class="ui toggle checkbox">
             <input type="checkbox" id="s3ForcePathStyle">
-            <label>Force Path Style</label>
+            <label>Forçar Estilo de Caminho</label>
           </div>
-          <small>Enable for MinIO and some S3-compatible providers.</small>
+          <small>Habilitar para MinIO e alguns provedores compatíveis com S3.</small>
         </div>
       </div>
     </div>
     <div class="actions">
-      <div class="ui cancel button secondary">Cancel</div>
-      <div class="ui button" id="testS3Connection">Test Connection</div>
-      <div class="ui red button" id="deleteS3Config">Delete Configuration</div>
-      <div class="ui positive right labeled icon button" id="saveS3Config">Save<i class="checkmark icon"></i></div>
+      <div class="ui cancel button secondary">Cancelar</div>
+      <div class="ui button" id="testS3Connection">Testar Conexão</div>
+      <div class="ui red button" id="deleteS3Config">Excluir Configuração</div>
+      <div class="ui positive right labeled icon button" id="saveS3Config">Salvar<i class="checkmark icon"></i></div>
     </div>
   </div>
 
   <!-- History Configuration Modal -->
   <div class="ui modal" id="modalHistoryConfig"><i class="close icon"></i>
-    <div class="header"> History Configuration </div>
+    <div class="header"> Configuração de Histórico </div>
     <div class="content">
       <div class="ui info message">
-        <div class="header">Message History</div>
-        <p>Number of messages to keep in history database. Set to zero to disable history.</p>
+        <div class="header">Histórico de Mensagens</div>
+        <p>Número de mensagens para manter no banco de dados de histórico. Defina como zero para desativar o histórico.</p>
       </div>
       <div class="ui form">
         <div class="field" id="messageHistoryField">
-          <label>History</label>
+          <label>Histórico</label>
           <input id="history" type="number" placeholder="0">
         </div>
       </div>
     </div>
     <div class="actions">
-      <div class="ui cancel button secondary">Cancel</div>
-      <div class="ui positive right labeled icon button" id="saveProxyConfig">Save<i class="checkmark icon"></i></div>
+      <div class="ui cancel button secondary">Cancelar</div>
+      <div class="ui positive right labeled icon button" id="saveProxyConfig">Salvar<i class="checkmark icon"></i></div>
     </div>
   </div>
 
 
   <!-- Proxy Configuration Modal -->
   <div class="ui modal" id="modalProxyConfig"><i class="close icon"></i>
-    <div class="header"> Proxy Configuration </div>
+    <div class="header"> Configuração de Proxy </div>
     <div class="content">
       <div class="ui info message">
-        <div class="header">Proxy Settings</div>
-        <p>Configure HTTP/HTTPS or SOCKS5 proxy for WhatsApp connections. Useful for network restrictions or enhanced privacy.</p>
+        <div class="header">Configurações de Proxy</div>
+        <p>Configure proxy HTTP/HTTPS ou SOCKS5 para conexões do WhatsApp. Útil para restrições de rede ou privacidade aprimorada.</p>
       </div>
       <div class="ui form">
         <div class="field">
           <div class="ui toggle checkbox" id="proxyEnabledToggle">
             <input type="checkbox" id="proxyEnabled">
-            <label>Enable Proxy</label>
+            <label>Habilitar Proxy</label>
           </div>
-          <small>Enable or disable proxy for this instance.</small>
+          <small>Habilitar ou desabilitar proxy para esta instância.</small>
         </div>
         <div class="field" id="proxyUrlField">
-          <label>Proxy URL</label>
-          <input id="proxyUrl" type="text" placeholder="http://proxy.example.com:8080 or socks5://user:pass@proxy.example.com:1080">
-          <small>Include protocol (http://, https://, or socks5://) and port. Authentication can be included in URL format.</small>
+          <label>URL do Proxy</label>
+          <input id="proxyUrl" type="text" placeholder="http://proxy.example.com:8080 ou socks5://usuario:senha@proxy.example.com:1080">
+          <small>Inclua o protocolo (http://, https:// ou socks5://) e a porta. A autenticação pode ser incluída no formato da URL.</small>
         </div>
       </div>
     </div>
     <div class="actions">
-      <div class="ui cancel button secondary">Cancel</div>
-      <div class="ui positive right labeled icon button" id="saveProxyConfig">Save<i class="checkmark icon"></i></div>
+      <div class="ui cancel button secondary">Cancelar</div>
+      <div class="ui positive right labeled icon button" id="saveProxyConfig">Salvar<i class="checkmark icon"></i></div>
     </div>
   </div>
 
   <!-- HMAC Configuration Modal -->
   <div class="ui modal" id="modalHmacConfig"><i class="close icon"></i>
-    <div class="header"> HMAC Configuration </div>
+    <div class="header"> Configuração HMAC </div>
     <div class="content">
       <div class="ui info message">
-        <div class="header">HMAC Key Settings</div>
-        <p>Configure HMAC key for webhook security. This key will be used to verify webhook authenticity.</p>
+        <div class="header">Configurações da Chave HMAC</div>
+        <p>Configure a chave HMAC para segurança do webhook. Esta chave será usada para verificar a autenticidade do webhook.</p>
       </div>
       <div class="ui warning message">
-        <div class="header">Important Security Notice</div>
+        <div class="header">Aviso Importante de Segurança</div>
         <p>
-          <strong>The HMAC key will be hidden after saving for security reasons.</strong><br>
-          • You won't be able to view it again<br>
-          • Save a copy in a secure location before proceeding<br>
-          • If lost, you'll need to generate a new key
+          <strong>A chave HMAC será ocultada após salvar por motivos de segurança.</strong><br>
+          • Você não poderá visualizá-la novamente<br>
+          • Salve uma cópia em um local seguro antes de prosseguir<br>
+          • Se perdida, você precisará gerar uma nova chave
         </p>
       </div>
       <div class="ui form">
         <div class="field">
-          <label>HMAC Key</label>
-          <input id="hmacKey" type="password" placeholder="Enter your HMAC key (minimum 32 characters)">
-          <small>Minimum 32 characters for security. Keep this key secret!</small>
+          <label>Chave HMAC</label>
+          <input id="hmacKey" type="password" placeholder="Digite sua chave HMAC (mínimo 32 caracteres)">
+          <small>Mínimo de 32 caracteres para segurança. Mantenha esta chave em segredo!</small>
         </div>
         <div class="field">
           <div class="ui buttons">
             <button class="ui primary button" id="generateHmacKey">
-              <i class="random icon"></i> Generate Random Key
+              <i class="random icon"></i> Gerar Chave Aleatória
             </button>
             <button class="ui black button" id="showHmacKey">
-              <i class="eye icon"></i> Show Key
+              <i class="eye icon"></i> Mostrar Chave
             </button>
             <button class="ui black button" id="hideHmacKey" style="display: none;">
-              <i class="eye slash icon"></i> Hide Key
+              <i class="eye slash icon"></i> Ocultar Chave
             </button>
           </div>
         </div>
       </div>
     </div>
     <div class="actions">
-      <div class="ui cancel button secondary">Cancel</div>
-      <div class="ui red button" id="deleteHmacConfig">Delete Configuration</div>
-      <div class="ui positive right labeled icon button" id="saveHmacConfig">Save<i class="checkmark icon"></i></div>
+      <div class="ui cancel button secondary">Cancelar</div>
+      <div class="ui red button" id="deleteHmacConfig">Excluir Configuração</div>
+      <div class="ui positive right labeled icon button" id="saveHmacConfig">Salvar<i class="checkmark icon"></i></div>
     </div>
   </div>
 
   <!-- Add Instance Modal -->
   <div class="ui large modal" id="addInstanceModal">
     <i class="close icon"></i>
-    <div class="header">Add New Instance</div>
+    <div class="header">Adicionar Nova Instância</div>
     <div class="content">
       <form class="ui form" id="addInstanceForm">
         <!-- Basic Configuration -->
-        <h4 class="ui dividing header">Basic Configuration</h4>
+        <h4 class="ui dividing header">Configuração Básica</h4>
         <div class="field">
-          <label>Name <span class="required">*</span></label>
-          <input type="text" name="name" placeholder="Instance name" required>
+          <label>Nome <span class="required">*</span></label>
+          <input type="text" name="name" placeholder="Nome da instância" required>
         </div>
         <div class="field">
           <label>Token <span class="required">*</span></label>
-          <input type="text" name="token" placeholder="Authentication Token" required>
+          <input type="text" name="token" placeholder="Token de Autenticação" required>
         </div>
         <div class="field">
-          <label>Webhook URL</label>
+          <label>URL do Webhook</label>
           <input type="url" name="webhook_url" placeholder="https://example.com/webhook">
         </div>
         <div class="field">
-          <label>Events <span class="required">*</span></label>
+          <label>Eventos <span class="required">*</span></label>
           <select name="events" id="webhookEventsInstance" class="ui fluid dropdown" multiple="" required>
-            <option value="">Select Events</option>
+            <option value="">Selecionar Eventos</option>
             <!-- Messages and Communication -->
-            <option value="Message">Message</option>
-            <option value="UndecryptableMessage">Undecryptable Message</option>
-            <option value="Receipt">Receipt</option>
-            <option value="MediaRetry">Media Retry</option>
+            <option value="Message">Mensagem</option>
+            <option value="UndecryptableMessage">Mensagem Não Decifrável</option>
+            <option value="Receipt">Recibo</option>
+            <option value="MediaRetry">Tentativa de Mídia</option>
             <!-- Groups and Contacts -->
-            <option value="GroupInfo">Group Info</option>
-            <option value="JoinedGroup">Joined Group</option>
-            <option value="Picture">Picture</option>
-            <option value="BlocklistChange">Blocklist Change</option>
-            <option value="Blocklist">Blocklist</option>
+            <option value="GroupInfo">Informações do Grupo</option>
+            <option value="JoinedGroup">Entrou no Grupo</option>
+            <option value="Picture">Imagem</option>
+            <option value="BlocklistChange">Mudança na Lista de Bloqueio</option>
+            <option value="Blocklist">Lista de Bloqueio</option>
             <!-- Connection and Session -->
-            <option value="Connected">Connected</option>
-            <option value="Disconnected">Disconnected</option>
-            <option value="ConnectFailure">Connect Failure</option>
-            <option value="KeepAliveRestored">Keep Alive Restored</option>
-            <option value="KeepAliveTimeout">Keep Alive Timeout</option>
-            <option value="LoggedOut">Logged Out</option>
-            <option value="ClientOutdated">Client Outdated</option>
-            <option value="TemporaryBan">Temporary Ban</option>
-            <option value="StreamError">Stream Error</option>
-            <option value="StreamReplaced">Stream Replaced</option>
-            <option value="PairSuccess">Pair Success</option>
-            <option value="PairError">Pair Error</option>
+            <option value="Connected">Conectado</option>
+            <option value="Disconnected">Desconectado</option>
+            <option value="ConnectFailure">Falha na Conexão</option>
+            <option value="KeepAliveRestored">Keep Alive Restaurado</option>
+            <option value="KeepAliveTimeout">Tempo Limite do Keep Alive</option>
+            <option value="LoggedOut">Desconectado</option>
+            <option value="ClientOutdated">Cliente Desatualizado</option>
+            <option value="TemporaryBan">Banimento Temporário</option>
+            <option value="StreamError">Erro de Stream</option>
+            <option value="StreamReplaced">Stream Substituído</option>
+            <option value="PairSuccess">Pareamento Bem-sucedido</option>
+            <option value="PairError">Erro de Pareamento</option>
             <option value="QR">QR</option>
-            <option value="QRScannedWithoutMultidevice">QR Scanned Without Multidevice</option>
+            <option value="QRScannedWithoutMultidevice">QR Escaneado Sem Multidispositivo</option>
             <!-- Privacy and Settings -->
-            <option value="PrivacySettings">Privacy Settings</option>
-            <option value="PushNameSetting">Push Name Setting</option>
-            <option value="UserAbout">User About</option>
+            <option value="PrivacySettings">Configurações de Privacidade</option>
+            <option value="PushNameSetting">Configuração de Nome de Exibição</option>
+            <option value="UserAbout">Sobre o Usuário</option>
             <!-- Synchronization and State -->
-            <option value="AppState">App State</option>
-            <option value="AppStateSyncComplete">App State Sync Complete</option>
-            <option value="HistorySync">History Sync</option>
-            <option value="OfflineSyncCompleted">Offline Sync Completed</option>
-            <option value="OfflineSyncPreview">Offline Sync Preview</option>
+            <option value="AppState">Estado do Aplicativo</option>
+            <option value="AppStateSyncComplete">Sincronização do Estado do Aplicativo Concluída</option>
+            <option value="HistorySync">Sincronização do Histórico</option>
+            <option value="OfflineSyncCompleted">Sincronização Offline Concluída</option>
+            <option value="OfflineSyncPreview">Prévia da Sincronização Offline</option>
             <!-- Calls -->
-            <option value="CallOffer">Call Offer</option>
-            <option value="CallAccept">Call Accept</option>
-            <option value="CallTerminate">Call Terminate</option>
-            <option value="CallOfferNotice">Call Offer Notice</option>
-            <option value="CallRelayLatency">Call Relay Latency</option>
+            <option value="CallOffer">Oferta de Chamada</option>
+            <option value="CallAccept">Aceitar Chamada</option>
+            <option value="CallTerminate">Encerrar Chamada</option>
+            <option value="CallOfferNotice">Notificação de Oferta de Chamada</option>
+            <option value="CallRelayLatency">Latência de Retransmissão de Chamada</option>
             <!-- Presence and Activity -->
-            <option value="Presence">Presence</option>
-            <option value="ChatPresence">Chat Presence</option>
+            <option value="Presence">Presença</option>
+            <option value="ChatPresence">Presença no Chat</option>
             <!-- Identity -->
-            <option value="IdentityChange">Identity Change</option>
+            <option value="IdentityChange">Mudança de Identidade</option>
             <!-- Errors -->
-            <option value="CATRefreshError">CAT Refresh Error</option>
+            <option value="CATRefreshError">Erro de Atualização CAT</option>
             <!-- Newsletter (WhatsApp Channels) -->
-            <option value="NewsletterJoin">Newsletter Join</option>
-            <option value="NewsletterLeave">Newsletter Leave</option>
-            <option value="NewsletterMuteChange">Newsletter Mute Change</option>
-            <option value="NewsletterLiveUpdate">Newsletter Live Update</option>
+            <option value="NewsletterJoin">Entrar no Canal</option>
+            <option value="NewsletterLeave">Sair do Canal</option>
+            <option value="NewsletterMuteChange">Mudança de Silenciamento do Canal</option>
+            <option value="NewsletterLiveUpdate">Atualização ao Vivo do Canal</option>
             <!-- Facebook/Meta Bridge -->
-            <option value="FBMessage">FB Message</option>
+            <option value="FBMessage">Mensagem FB</option>
             <!-- Special -->
-            <option value="All">All Events</option>
+            <option value="All">Todos os Eventos</option>
           </select>
         </div>
         <div class="field">
-          <label>Message History</label>
+          <label>Histórico de Mensagens</label>
           <input type="number" name="history" min="0" value="0" placeholder="0">
-          <small>Number of messages to store in history per chat for this instance. Set to 0 to disable message history.</small>
+          <small>Número de mensagens para armazenar no histórico por chat para esta instância. Defina como 0 para desativar o histórico de mensagens.</small>
         </div>
 
         <!-- Proxy Configuration -->
-        <h4 class="ui dividing header">Proxy Configuration (Optional)</h4>
+        <h4 class="ui dividing header">Configuração de Proxy (Opcional)</h4>
         <div class="field">
           <div class="ui toggle checkbox" id="addInstanceProxyToggle">
             <input type="checkbox" name="proxy_enabled">
-            <label>Enable Proxy</label>
+            <label>Habilitar Proxy</label>
           </div>
-          <small>Enable proxy for this instance</small>
+          <small>Habilitar proxy para esta instância</small>
         </div>
         <div class="field" id="addInstanceProxyUrlField" style="display: none;">
-          <label>Proxy URL</label>
-          <input type="text" name="proxy_url" placeholder="http://proxy.example.com:8080 or socks5://user:pass@proxy.example.com:1080">
-          <small>Include protocol (http://, https://, or socks5://) and port. Authentication can be included in URL format.</small>
+          <label>URL do Proxy</label>
+          <input type="text" name="proxy_url" placeholder="http://proxy.example.com:8080 ou socks5://usuario:senha@proxy.example.com:1080">
+          <small>Inclua o protocolo (http://, https:// ou socks5://) e a porta. A autenticação pode ser incluída no formato da URL.</small>
         </div>
 
         <!-- S3 Configuration -->
-        <h4 class="ui dividing header">S3 Storage Configuration (Optional)</h4>
+        <h4 class="ui dividing header">Configuração de Armazenamento S3 (Opcional)</h4>
         <div class="field">
           <div class="ui toggle checkbox" id="addInstanceS3Toggle">
             <input type="checkbox" name="s3_enabled">
-            <label>Enable S3 Storage</label>
+            <label>Habilitar Armazenamento S3</label>
           </div>
-          <small>Enable S3-compatible storage for media files</small>
+          <small>Habilitar armazenamento compatível com S3 para arquivos de mídia</small>
         </div>
         <div id="addInstanceS3Fields" style="display: none;">
           <div class="field">
-            <label>S3 Endpoint URL</label>
-            <input type="text" name="s3_endpoint" placeholder="https://s3.amazonaws.com or custom endpoint">
-            <small>For AWS S3, leave empty or use default. For MinIO/others, use your custom endpoint.</small>
+            <label>URL do Endpoint S3</label>
+            <input type="text" name="s3_endpoint" placeholder="https://s3.amazonaws.com ou endpoint personalizado">
+            <small>Para AWS S3, deixe vazio ou use o padrão. Para MinIO/outros, use seu endpoint personalizado.</small>
           </div>
           <div class="two fields">
             <div class="field">
-              <label>Access Key ID</label>
-              <input type="text" name="s3_access_key" placeholder="Your S3 access key ID">
+              <label>ID da Chave de Acesso</label>
+              <input type="text" name="s3_access_key" placeholder="Seu ID da chave de acesso S3">
             </div>
             <div class="field">
-              <label>Secret Access Key</label>
-              <input type="password" name="s3_secret_key" placeholder="Your S3 secret access key">
+              <label>Chave Secreta de Acesso</label>
+              <input type="password" name="s3_secret_key" placeholder="Sua chave secreta de acesso S3">
             </div>
           </div>
           <div class="two fields">
             <div class="field">
-              <label>Bucket Name</label>
-              <input type="text" name="s3_bucket" placeholder="Your S3 bucket name">
+              <label>Nome do Bucket</label>
+              <input type="text" name="s3_bucket" placeholder="Seu nome de bucket S3">
             </div>
             <div class="field">
-              <label>Region</label>
+              <label>Região</label>
               <input type="text" name="s3_region" placeholder="us-east-1">
-              <small>Required for AWS S3. Optional for MinIO and other providers.</small>
+              <small>Obrigatório para AWS S3. Opcional para MinIO e outros provedores.</small>
             </div>
           </div>
           <div class="field">
-            <label>Public URL (Optional)</label>
+            <label>URL Pública (Opcional)</label>
             <input type="text" name="s3_public_url" placeholder="https://cdn.example.com">
-            <small>Public URL for accessing files (if different from endpoint).</small>
+            <small>URL pública para acessar arquivos (se diferente do endpoint).</small>
           </div>
           <div class="two fields">
             <div class="field">
-              <label>Media Delivery</label>
+              <label>Entrega de Mídia</label>
               <select class="ui dropdown" name="s3_media_delivery" id="addInstanceS3MediaDelivery">
-                <option value="base64">Base64 (Default)</option>
-                <option value="s3">S3 URL only</option>
-                <option value="both">Both Base64 and S3 URL</option>
+                <option value="base64">Base64 (Padrão)</option>
+                <option value="s3">Apenas URL S3</option>
+                <option value="both">Ambos Base64 e URL S3</option>
               </select>
-              <small>How media should be delivered in webhook events.</small>
+              <small>Como a mídia deve ser entregue em eventos de webhook.</small>
             </div>
             <div class="field">
-              <label>Retention Days</label>
+              <label>Dias de Retenção</label>
               <input type="number" name="s3_retention_days" min="1" value="30" placeholder="30">
-              <small>Number of days to retain files in S3 before deletion.</small>
+              <small>Número de dias para reter arquivos no S3 antes da exclusão.</small>
             </div>
           </div>
           <div class="field">
             <div class="ui toggle checkbox">
               <input type="checkbox" name="s3_path_style">
-              <label>Force Path Style</label>
+              <label>Forçar Estilo de Caminho</label>
             </div>
-            <small>Enable for MinIO and some S3-compatible providers.</small>
+            <small>Habilitar para MinIO e alguns provedores compatíveis com S3.</small>
           </div>
         </div>
 
         <!-- HMAC Configuration -->
-        <h4 class="ui dividing header">HMAC Configuration (Optional)</h4>
+        <h4 class="ui dividing header">Configuração HMAC (Opcional)</h4>
         <div class="field">
           <div class="ui toggle checkbox" id="addInstanceHmacToggle">
             <input type="checkbox" name="hmac_enabled">
-            <label>Enable HMAC Key</label>
+            <label>Habilitar Chave HMAC</label>
           </div>
-          <small>Enable HMAC key for webhook security</small>
+          <small>Habilitar chave HMAC para segurança do webhook</small>
         </div>
         <div class="ui warning message" id="addInstanceHmacKeyWarningMessage" style="display: none;">
-          <div class="header">Important Security Notice</div>
+          <div class="header">Aviso Importante de Segurança</div>
           <p>
-            <strong>The HMAC key will be hidden after saving for security reasons.</strong><br>
-            • You won't be able to view it again<br>
-            • Save a copy in a secure location before proceeding<br>
-            • If lost, you'll need to generate a new key
+            <strong>A chave HMAC será ocultada após salvar por motivos de segurança.</strong><br>
+            • Você não poderá visualizá-la novamente<br>
+            • Salve uma cópia em um local seguro antes de prosseguir<br>
+            • Se perdida, você precisará gerar uma nova chave
           </p>
         </div>
         <div class="field"
          id="addInstanceHmacKeyField" style="display: none;">
-          <label>HMAC Key</label>
-          <input type="password" name="hmac_key" placeholder="Enter HMAC key (minimum 32 characters)">
-          <small>Minimum 32 characters for security. Keep this key secret!</small>
+          <label>Chave HMAC</label>
+          <input type="password" name="hmac_key" placeholder="Digite a chave HMAC (mínimo 32 caracteres)">
+          <small>Mínimo de 32 caracteres para segurança. Mantenha esta chave em segredo!</small>
           <div class="ui buttons" style="margin-top: 10px;">
             <button type="button" class="ui primary button" id="generateHmacKeyInstance">
-              <i class="random icon"></i> Generate Random Key
+              <i class="random icon"></i> Gerar Chave Aleatória
             </button>
             <button type="button" class="ui black button" id="showHmacKeyInstance">
-              <i class="eye icon"></i> Show Key
+              <i class="eye icon"></i> Mostrar Chave
             </button>
             <button type="button" class="ui black button" id="hideHmacKeyInstance" style="display: none;">
-              <i class="eye slash icon"></i> Hide Key
+              <i class="eye slash icon"></i> Ocultar Chave
             </button>
           </div>
         </div>
@@ -771,9 +773,9 @@
       </form>
     </div>
     <div class="actions">
-      <button class="ui black deny button">Cancel</button>
+      <button class="ui black deny button">Cancelar</button>
       <button type="submit" form="addInstanceForm" class="ui positive right labeled icon button">
-        Submit
+        Enviar
         <i class="checkmark icon"></i>
       </button>
     </div>
@@ -782,14 +784,14 @@
   <!-- Instance Delete Confirmation Modal -->
 
   <div class="ui small modal" id="deleteInstanceModal">
-    <div class="header">Delete Instance</div>
+    <div class="header">Excluir Instância</div>
     <div class="content">
-      <p>Are you sure you want to delete this instance? This action cannot be undone.</p>
+      <p>Tem certeza de que deseja excluir esta instância? Esta ação não pode ser desfeita.</p>
     </div>
     <div class="actions">
-      <div class="ui negative button">No</div>
+      <div class="ui negative button">Não</div>
       <div class="ui positive right labeled icon button" id="confirmDeleteButton">
-        Yes
+        Sim
         <i class="checkmark icon"></i>
       </div>
     </div>
@@ -798,62 +800,62 @@
   <!-- User Modals -->
 
   <div class="ui modal" id="modalUserInfo"><i class="close icon"></i>
-    <div class="header"> User Info </div>
+    <div class="header"> Informações do Usuário </div>
     <div class="content">
       <div class="ui message info hidden" id="userInfoContainer"></div>
       <div class="ui form">
-        <div class="field"><label>Phone</label><input id="userinfoinput" type="text" placeholder="Type phone number"></div>
+        <div class="field"><label>Telefone</label><input id="userinfoinput" type="text" placeholder="Digite o número de telefone"></div>
       </div>
     </div>
     <div class="actions">
-      <div class="ui cancel button secondary">Close</div>
-      <div class="ui positive right labeled icon button">Get Info<i class="checkmark icon"></i></div>
+      <div class="ui cancel button secondary">Fechar</div>
+      <div class="ui positive right labeled icon button">Obter Informações<i class="checkmark icon"></i></div>
     </div>
   </div>
 
   <div class="ui modal" id="modalUserAvatar"><i class="close icon"></i>
-    <div class="header"> User Avatar </div>
+    <div class="header"> Avatar do Usuário </div>
     <div class="content">
       <div class="ui message info hidden" id="userAvatarContainer"></div>
       <div class="ui form">
-        <div class="field"><label>Phone</label><input id="useravatarinput" type="text" placeholder="Type phone number"></div>
+        <div class="field"><label>Telefone</label><input id="useravatarinput" type="text" placeholder="Digite o número de telefone"></div>
       </div>
     </div>
     <div class="actions">
-      <div class="ui cancel button secondary">Close</div>
-      <div class="ui positive right labeled icon button">Get Avatar<i class="checkmark icon"></i></div>
+      <div class="ui cancel button secondary">Fechar</div>
+      <div class="ui positive right labeled icon button">Obter Avatar<i class="checkmark icon"></i></div>
     </div>
   </div>
 
   <!-- Message Modals -->
 
   <div class="ui modal" id="modalSendTextMessage"><i class="close icon"></i>
-    <div class="header"> Send Text Message </div>
+    <div class="header"> Enviar Mensagem de Texto </div>
     <div class="content">
       <div class="ui message info hidden" id="sendMessageContainer"></div>
       <div class="ui form">
-        <div class="field"><label>Phone</label><input id="messagesendphone" type="text" placeholder="Type phone number"></div>
-        <div class="field"><label>Message</label><textarea id="messagesendtext"></textarea></div>
+        <div class="field"><label>Telefone</label><input id="messagesendphone" type="text" placeholder="Digite o número de telefone"></div>
+        <div class="field"><label>Mensagem</label><textarea id="messagesendtext"></textarea></div>
       </div>
     </div>
     <div class="actions">
-      <div class="ui cancel button secondary">Close</div>
-      <div class="ui positive right labeled icon button">Send<i class="checkmark icon"></i></div>
+      <div class="ui cancel button secondary">Fechar</div>
+      <div class="ui positive right labeled icon button">Enviar<i class="checkmark icon"></i></div>
     </div>
   </div>
 
   <div class="ui modal" id="modalDeleteMessage"><i class="close icon"></i>
-    <div class="header"> Delete Message </div>
+    <div class="header"> Excluir Mensagem </div>
     <div class="content">
       <div class="ui message info hidden" id="deleteMessageContainer"></div>
       <div class="ui form">
-        <div class="field"><label>Phone</label><input id="messagedeletephone" type="text" placeholder="Type phone number"></div>
-        <div class="field"><label>Message ID</label><input id="messagedeleteid" type="text" placeholder="Type the message id"></div>
+        <div class="field"><label>Telefone</label><input id="messagedeletephone" type="text" placeholder="Digite o número de telefone"></div>
+        <div class="field"><label>ID da Mensagem</label><input id="messagedeleteid" type="text" placeholder="Digite o ID da mensagem"></div>
       </div>
     </div>
     <div class="actions">
-      <div class="ui cancel button secondary">Close</div>
-      <div class="ui positive right labeled icon button">Delete<i class="trash icon"></i></div>
+      <div class="ui cancel button secondary">Fechar</div>
+      <div class="ui positive right labeled icon button">Excluir<i class="trash icon"></i></div>
     </div>
   </div>
 
@@ -864,26 +866,26 @@
     <i class="close icon"></i>
     <div class="header">
       <i class="users icon"></i>
-      <span id="groupDetailsTitle">Group Details</span>
+      <span id="groupDetailsTitle">Detalhes do Grupo</span>
     </div>
     <div class="content">
       <div class="ui stackable grid">
         <div class="sixteen wide column">
           <div class="ui relaxed list">
             <div class="item">
-              <div class="header">Group Name</div>
+              <div class="header">Nome do Grupo</div>
               <div id="groupDetailsName">-</div>
             </div>
             <div class="item">
-              <div class="header">Description</div>
+              <div class="header">Descrição</div>
               <div id="groupDetailsDescription">-</div>
             </div>
             <div class="item">
-              <div class="header">Participants</div>
+              <div class="header">Participantes</div>
               <div id="groupDetailsParticipants">-</div>
             </div>
             <div class="item">
-              <div class="header">Created</div>
+              <div class="header">Criado</div>
               <div id="groupDetailsCreated">-</div>
             </div>
           </div>
@@ -894,7 +896,7 @@
       <div class="ui divider"></div>
       <h4 class="ui header">
         <i class="users icon"></i>
-        Participants
+        Participantes
       </h4>
       <div class="ui relaxed divided list" id="groupParticipantsList">
         <!-- Participants will be populated here -->
@@ -904,26 +906,26 @@
       <div class="ui stackable grid">
         <!-- Basic Actions -->
         <div class="eight wide column">
-          <h5 class="ui header">Basic Actions</h5>
+          <h5 class="ui header">Ações Básicas</h5>
           <div class="ui fluid buttons">
             <button class="ui blue button" id="editGroupInfoBtn">
-              <i class="edit icon"></i> Edit Info
+              <i class="edit icon"></i> Editar Informações
         </button>
             <button class="ui green button" id="manageParticipantsBtn">
-              <i class="users icon"></i> Participants
+              <i class="users icon"></i> Gerenciar Participantes
         </button>
           </div>
         </div>
         
         <!-- Admin Actions -->
         <div class="eight wide column" id="adminActionsSection" style="display: none;">
-          <h5 class="ui header">Admin Actions</h5>
+          <h5 class="ui header">Ações do Administrador</h5>
           <div class="ui fluid buttons">
             <button class="ui orange button" id="groupSettingsBtn">
-          <i class="settings icon"></i> Settings
+          <i class="settings icon"></i> Configurações
         </button>
             <button class="ui purple button" id="groupInviteLinkBtn">
-              <i class="linkify icon"></i> Invite Link
+              <i class="linkify icon"></i> Link de Convite
             </button>
           </div>
         </div>
@@ -931,9 +933,9 @@
         <!-- Danger Zone -->
         <div class="sixteen wide column">
           <div class="ui divider"></div>
-          <h5 class="ui red header">Danger Zone</h5>
+          <h5 class="ui red header">Zona de Perigo</h5>
           <button class="ui red button fluid" id="leaveGroupBtn">
-          <i class="sign out icon"></i> Leave Group
+          <i class="sign out icon"></i> Sair do Grupo
         </button>
         </div>
       </div>
@@ -945,29 +947,29 @@
     <i class="close icon"></i>
     <div class="header">
       <i class="plus icon"></i>
-      Create New Group
+      Criar Novo Grupo
     </div>
     <div class="content">
       <form class="ui form" id="createGroupForm">
         <div class="field">
-          <label>Group Name <span class="required">*</span></label>
-          <input type="text" name="groupName" placeholder="Enter group name" required maxlength="25">
+          <label>Nome do Grupo <span class="required">*</span></label>
+          <input type="text" name="groupName" placeholder="Digite o nome do grupo" required maxlength="25">
         </div>
         <div class="field">
-          <label>Participants <span class="required">*</span></label>
+          <label>Participantes <span class="required">*</span></label>
           <div class="ui info message" id="contactsStatus" style="display: none;">
             <i class="info circle icon"></i>
-            <span id="contactsStatusText">Click "Load Contacts" to populate the participants list.</span>
+            <span id="contactsStatusText">Clique em "Carregar Contatos" para preencher a lista de participantes.</span>
           </div>
           <div class="ui fluid action input" style="margin-bottom: 10px;">
             <button type="button" class="ui blue button" id="loadContactsBtn">
-              <i class="users icon"></i> Load Contacts
+              <i class="users icon"></i> Carregar Contatos
             </button>
           </div>
           <div class="ui fluid multiple search selection dropdown" id="participantsDropdown">
             <input type="hidden" name="participants">
             <i class="dropdown icon"></i>
-            <div class="default text">Select participants</div>
+            <div class="default text">Selecionar participantes</div>
             <div class="menu">
               <!-- Contacts will be populated here -->
             </div>
@@ -977,9 +979,9 @@
       </form>
     </div>
     <div class="actions">
-      <div class="ui black deny button">Cancel</div>
+      <div class="ui black deny button">Cancelar</div>
       <div class="ui positive right labeled icon button" id="createGroupSubmit">
-        Create Group
+        Criar Grupo
         <i class="checkmark icon"></i>
       </div>
     </div>
@@ -990,14 +992,28 @@
     <i class="close icon"></i>
     <div class="header">
       <i class="add user icon"></i>
-      Join Group
+      Entrar no Grupo
     </div>
     <div class="content">
       <form class="ui form" id="joinGroupForm">
         <div class="field">
-          <label>Invite Link or Code</label>
-          <input type="text" name="inviteCode" placeholder="Paste invite link or enter code" required>
+          <label>Link ou Código de Convite</label>
+          <input type="text" name="inviteCode" placeholder="Cole o link de convite ou digite o código" required>
           <div class="ui description">
+            Você pode obter o link de convite de um grupo do WhatsApp ou um código de convite de 22 caracteres.
+          </div>
+        </div>
+        <div class="ui error message"></div>
+      </form>
+    </div>
+    <div class="actions">
+      <div class="ui black deny button">Cancelar</div>
+      <div class="ui positive right labeled icon button" id="joinGroupSubmit">
+        Entrar no Grupo
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
+  </div>
             Paste the full WhatsApp invite link or just the invite code
           </div>
         </div>
