@@ -136,7 +136,8 @@ body.dark-theme .ui.header {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px; /* Spacing between buttons */
+  gap: 8px !important; /* Spacing between buttons */
+  padding: 0 !important; /* Ensure no internal padding interferes */
 }
 
 body.dark-theme .ui.cards > .card {
@@ -263,7 +264,7 @@ body > .ui.logingrid {
   background: var(--primary-color) !important;
   color: white !important;
   margin-bottom: 2em !important;
-  box-shadow: 
+  box-shadow:
       0 20px 40px rgba(0, 168, 132, 0.2),
       inset 0 0 80px rgba(255, 255, 255, 0.15) !important;
   position: relative;
@@ -289,7 +290,7 @@ body > .ui.logingrid {
   padding: 1.5em 2em !important;
   border-radius: 24px !important;
   margin-bottom: 2em !important;
-  box-shadow: 
+  box-shadow:
       0 20px 40px rgba(0, 168, 132, 0.2),
       inset 0 0 80px rgba(255, 255, 255, 0.15) !important;
   position: relative;
@@ -458,26 +459,26 @@ a#menulogout, a:visited#menulogout {
 }
 
 #user-role-indicator.admin {
-  color: #db2828; 
+  color: #db2828;
   font-weight: bold;
 }
-  
+
 #user-role-indicator.admin div.label {
-  background-color:#d31616; 
+  background-color:#d31616;
 }
 
 #user-role-indicator.admin i.icon {
   color:#d31616;
 }
-  
+
 #user-role-indicator.user {
   color: #a3f298;
 }
-  
+
 #user-role-indicator.user i.icon {
   color: #a3f298;
 }
-  
+
 #user-role-indicator.user div.label {
   background-color: #a3f298;
   color: #000;
@@ -654,11 +655,11 @@ a#menulogout, a:visited#menulogout {
   .group-actions {
     flex-direction: column !important;
   }
-  
+
   .group-action-btn {
     width: 100% !important;
   }
-  
+
   .group-stats {
     flex-direction: column !important;
     gap: 0.5em !important;
@@ -687,6 +688,10 @@ a#menulogout, a:visited#menulogout {
 
 .group-list-item:hover {
     background-color: #f8f9fa;
+}
+
+.group-list-item .content {
+    padding: 1em !important;
 }
 
 .group-list-item .header {
@@ -808,17 +813,17 @@ a#menulogout, a:visited#menulogout {
     .group-list-item .ui.grid .column {
         padding: 0.5rem;
     }
-    
+
     .group-list-item .four.wide.column {
         width: 100% !important;
         text-align: left !important;
         margin-top: 1rem;
     }
-    
+
     .group-list-item .eleven.wide.column {
         width: 100% !important;
     }
-    
+
     .group-list-item .one.wide.column {
         width: auto !important;
         margin-right: 1rem;
@@ -927,24 +932,24 @@ a#menulogout, a:visited#menulogout {
         margin: 1rem !important;
         max-width: calc(100vw - 2rem) !important;
     }
-    
+
     .ui.modal#modalGroupDetails .actions .ui.stackable.buttons {
         flex-direction: column !important;
     }
-    
+
     .ui.modal#modalGroupDetails .actions .ui.stackable.buttons .button {
         width: 100% !important;
         margin: 0.25rem 0 !important;
     }
-    
+
     .participant-item {
         padding: 0.75rem 0 !important;
     }
-    
+
     .participant-item .content .header {
         font-size: 1rem !important;
     }
-    
+
     .participant-item .right.floated.content {
         float: none !important;
         margin-top: 0.5rem !important;
@@ -1024,6 +1029,7 @@ a#menulogout, a:visited#menulogout {
     max-height: 80px !important;
     border-radius: 50% !important;
     object-fit: cover !important;
+    margin-right: 1em !important;
 }
 
 /* Invite Link Input */
@@ -1151,57 +1157,57 @@ a#menulogout, a:visited#menulogout {
         width: 100% !important;
         margin-bottom: 1rem !important;
     }
-    
+
     .ui.modal#modalGroupDetails .actions .ui.fluid.buttons {
         flex-direction: column !important;
     }
-    
+
     .ui.modal#modalGroupDetails .actions .ui.fluid.buttons .button {
         margin: 0.25rem 0 !important;
         width: 100% !important;
     }
-    
+
     .ui.modal#modalManageParticipants .ui.stackable.grid .column {
         width: 100% !important;
         margin-bottom: 2rem !important;
     }
-    
+
     .ui.modal#modalGroupSettings .ui.segment .ui.stackable.grid .column {
         width: 100% !important;
         text-align: center !important;
     }
-    
+
     .ui.modal#modalGroupSettings .ui.buttons {
         flex-direction: column !important;
     }
-    
+
     .ui.modal#modalGroupSettings .ui.buttons .button {
         margin: 0.25rem 0 !important;
         width: 100% !important;
     }
-    
+
     /* Mobile layout for participant items */
     .ui.modal#modalManageParticipants .participant-item .content {
         flex-direction: column !important;
         align-items: flex-start !important;
     }
-    
+
     .ui.modal#modalManageParticipants .participant-item .participant-actions {
         margin-left: 0 !important;
         margin-top: 0.5rem !important;
         align-items: flex-start !important;
         width: 100% !important;
     }
-    
+
     .ui.modal#modalManageParticipants .participant-item .participant-labels {
         justify-content: flex-start !important;
         margin-bottom: 0.5rem !important;
     }
-    
+
     .ui.modal#modalManageParticipants .participant-item .ui.mini.buttons {
         width: 100% !important;
     }
-    
+
     .ui.modal#modalManageParticipants .participant-item .ui.mini.buttons .button {
         flex: 1 !important;
         margin: 0.1rem !important;
@@ -1285,4 +1291,27 @@ a#menulogout, a:visited#menulogout {
     border-color: rgba(219, 40, 40, 0.3) !important;
     background-color: rgba(219, 40, 40, 0.05) !important;
     color: #db2828 !important;
+}
+
+.profile-picture {
+  width: 60px !important;
+  height: 60px !important;
+  object-fit: cover !important;
+  border: 2px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .profile-picture {
+  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ui.cards > .card .content .ui.grid {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.ui.cards > .card .content .ui.grid > .column {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }

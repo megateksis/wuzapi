@@ -1229,9 +1229,16 @@ function filterAndRenderInstances() {
             <div class="column">
                 <div class="ui fluid card" id="instance-card-${instance.id}">
                     <div class="content">
-                        <div class="header">${instance.name}</div>
-                        <div class="meta">Número: ${instance.number || 'N/A'}</div>
-                        <div class="meta">ID: ${instance.id}</div>
+                        <div class="ui grid">
+                            <div class="four wide column">
+                                <img class="ui circular image profile-picture" src="https://react.semantic-ui.com/images/avatar/large/stevie.jpg">
+                            </div>
+                            <div class="twelve wide column">
+                                <div class="header">${instance.name}</div>
+                                <div class="meta">Número: ${instance.number || 'N/A'}</div>
+                                <div class="meta">ID: ${instance.id}</div>
+                            </div>
+                        </div>
                         <div class="description">
                             <div class="ui labels" style="margin-top: 0.5em;">
                                 <div class="ui ${instance.connected ? 'green' : 'red'} horizontal label">
