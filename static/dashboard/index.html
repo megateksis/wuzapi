@@ -142,104 +142,114 @@
     </div>
   </div>
 
-  <!-- Dashboard -->
-  <div class="ui container fluid p1 hidden maingrid" id="mainDashboard">
+  <!-- Edit Instance Modal -->
+  <div class="ui large modal" id="modalEditInstance">
+    <i class="close icon"></i>
+    <div class="header">Editar Instância: <span id="editInstanceName"></span></div>
+    <div class="content">
+      <!-- Dashboard -->
+      <div class="ui container fluid p1" id="mainDashboard">
 
-    <div class="ui horizontal divider widget"> Configuração </div>
-    <div class="ui three column stackable grid cards">
-      <div class="purple card hidden widget" style="cursor: pointer;" id="s3Config">
-        <div class="content"><a class="ui purple right ribbon label">Config</a>
-          <div class="header">Armazenamento S3</div>
-          <div class="description">Configure o armazenamento compatível com S3 para arquivos de mídia.</div>
+        <div class="ui horizontal divider widget"> Configuração </div>
+        <div class="ui three column stackable grid cards">
+          <div class="purple card hidden widget" style="cursor: pointer;" id="s3Config">
+            <div class="content"><a class="ui purple right ribbon label">Config</a>
+              <div class="header">Armazenamento S3</div>
+              <div class="description">Configure o armazenamento compatível com S3 para arquivos de mídia.</div>
+            </div>
+          </div>
+          <div class="purple card hidden widget" style="cursor: pointer;" id="proxyConfig">
+            <div class="content"><a class="ui purple right ribbon label">Config</a>
+              <div class="header">Configurações de Proxy</div>
+              <div class="description">Configure o proxy para conexões do WhatsApp.</div>
+            </div>
+          </div>
+          <div class="purple card hidden widget" style="cursor: pointer;" id="webhookConfig">
+            <div class="content"><a class="ui purple right ribbon label">Config</a>
+              <div class="header">Eventos de Webhook</div>
+              <div class="description">Configure a URL do webhook e as assinaturas de eventos.</div>
+            </div>
+          </div>
+          <div class="purple card hidden widget" style="cursor: pointer;" id="historyConfig">
+            <div class="content"><a class="ui purple right ribbon label">Config</a>
+              <div class="header">Histórico de Mensagens</div>
+              <div class="description">Configure o histórico de mensagens.</div>
+            </div>
+          </div>
+          <div class="purple card hidden widget" style="cursor: pointer;" id="hmacConfig">
+            <div class="content"><a class="ui purple right ribbon label">Config</a>
+              <div class="header">Chave HMAC</div>
+              <div class="description">Configure a chave HMAC para segurança do webhook.</div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="purple card hidden widget" style="cursor: pointer;" id="proxyConfig">
-        <div class="content"><a class="ui purple right ribbon label">Config</a>
-          <div class="header">Configurações de Proxy</div>
-          <div class="description">Configure o proxy para conexões do WhatsApp.</div>
+
+        <div class="ui horizontal divider widget"> Usuário </div>
+        <div class="ui three column stackable grid cards">
+          <div class="red card hidden widget" style="cursor: pointer;" id="userInfo">
+            <div class="content"><a class="ui red right ribbon label">Usuário</a>
+              <div class="header">Informações do Usuário</div>
+              <div class="description"> Pesquise usuários por número de telefone.</div>
+            </div>
+          </div>
+          <div class="red card hidden widget" style="cursor: pointer;" id="userAvatar">
+            <div class="content"><a class="ui red right ribbon label">Usuário</a>
+              <div class="header">Avatar do Usuário</div>
+              <div class="description"> Obtenha o Avatar do usuário por número de telefone.</div>
+            </div>
+          </div>
+          <div class="red card hidden widget" style="cursor: pointer;" id="userContacts">
+            <div class="content"><a class="ui red right ribbon label">Usuário</a>
+              <div class="header">Obter Contatos</div>
+              <div class="description"> Obtenha todos os contatos.</div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="purple card hidden widget" style="cursor: pointer;" id="webhookConfig">
-        <div class="content"><a class="ui purple right ribbon label">Config</a>
-          <div class="header">Eventos de Webhook</div>
-          <div class="description">Configure a URL do webhook e as assinaturas de eventos.</div>
+
+        <div class="ui horizontal divider widget"> Conversa </div>
+
+        <div class="ui three column stackable grid cards">
+          <div class="blue card hidden widget" style="cursor: pointer;" id="sendTextMessage">
+            <div class="content"><a class="ui blue right ribbon label">Conversa</a>
+              <div class="header">Enviar Mensagem de Texto</div>
+              <div class="description"> Envia uma mensagem de texto.</div>
+            </div>
+          </div>
+          <div class="blue card hidden widget" style="cursor: pointer;" id="deleteMessage">
+            <div class="content"><a class="ui blue right ribbon label">Conversa</a>
+              <div class="header">Excluir Mensagem</div>
+              <div class="description"> Exclui sua mensagem enviada.</div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="purple card hidden widget" style="cursor: pointer;" id="historyConfig">
-        <div class="content"><a class="ui purple right ribbon label">Config</a>
-          <div class="header">Histórico de Mensagens</div>
-          <div class="description">Configure o histórico de mensagens.</div>
+
+        <div class="ui horizontal divider widget"> Grupos </div>
+        <div class="ui three column stackable grid cards">
+          <div class="green card hidden widget" style="cursor: pointer;" id="groupsList">
+            <div class="content"><a class="ui green right ribbon label">Grupos</a>
+              <div class="header">Listar Grupos</div>
+              <div class="description">Visualize todos os seus grupos do WhatsApp.</div>
+            </div>
+          </div>
+          <div class="green card hidden widget" style="cursor: pointer;" id="createGroup">
+            <div class="content"><a class="ui green right ribbon label">Grupos</a>
+              <div class="header">Criar Grupo</div>
+              <div class="description">Crie um novo grupo do WhatsApp.</div>
+            </div>
+          </div>
+          <div class="green card hidden widget" style="cursor: pointer;" id="joinGroup">
+            <div class="content"><a class="ui green right ribbon label">Grupos</a>
+              <div class="header">Entrar no Grupo</div>
+              <div class="description">Entre em um grupo usando o link de convite.</div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="purple card hidden widget" style="cursor: pointer;" id="hmacConfig">
-        <div class="content"><a class="ui purple right ribbon label">Config</a>
-          <div class="header">Chave HMAC</div>
-          <div class="description">Configure a chave HMAC para segurança do webhook.</div>
-        </div>
+
       </div>
     </div>
-
-    <div class="ui horizontal divider widget"> Usuário </div>
-    <div class="ui three column stackable grid cards">
-      <div class="red card hidden widget" style="cursor: pointer;" id="userInfo">
-        <div class="content"><a class="ui red right ribbon label">Usuário</a>
-          <div class="header">Informações do Usuário</div>
-          <div class="description"> Pesquise usuários por número de telefone.</div>
-        </div>
-      </div>
-      <div class="red card hidden widget" style="cursor: pointer;" id="userAvatar">
-        <div class="content"><a class="ui red right ribbon label">Usuário</a>
-          <div class="header">Avatar do Usuário</div>
-          <div class="description"> Obtenha o Avatar do usuário por número de telefone.</div>
-        </div>
-      </div>
-      <div class="red card hidden widget" style="cursor: pointer;" id="userContacts">
-        <div class="content"><a class="ui red right ribbon label">Usuário</a>
-          <div class="header">Obter Contatos</div>
-          <div class="description"> Obtenha todos os contatos.</div>
-        </div>
-      </div>
+    <div class="actions">
+      <div class="ui cancel button secondary">Fechar</div>
     </div>
-
-    <div class="ui horizontal divider widget"> Conversa </div>
-
-    <div class="ui three column stackable grid cards">
-      <div class="blue card hidden widget" style="cursor: pointer;" id="sendTextMessage">
-        <div class="content"><a class="ui blue right ribbon label">Conversa</a>
-          <div class="header">Enviar Mensagem de Texto</div>
-          <div class="description"> Envia uma mensagem de texto.</div>
-        </div>
-      </div>
-      <div class="blue card hidden widget" style="cursor: pointer;" id="deleteMessage">
-        <div class="content"><a class="ui blue right ribbon label">Conversa</a>
-          <div class="header">Excluir Mensagem</div>
-          <div class="description"> Exclui sua mensagem enviada.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ui horizontal divider widget"> Grupos </div>
-    <div class="ui three column stackable grid cards">
-      <div class="green card hidden widget" style="cursor: pointer;" id="groupsList">
-        <div class="content"><a class="ui green right ribbon label">Grupos</a>
-          <div class="header">Listar Grupos</div>
-          <div class="description">Visualize todos os seus grupos do WhatsApp.</div>
-        </div>
-      </div>
-      <div class="green card hidden widget" style="cursor: pointer;" id="createGroup">
-        <div class="content"><a class="ui green right ribbon label">Grupos</a>
-          <div class="header">Criar Grupo</div>
-          <div class="description">Crie um novo grupo do WhatsApp.</div>
-        </div>
-      </div>
-      <div class="green card hidden widget" style="cursor: pointer;" id="joinGroup">
-        <div class="content"><a class="ui green right ribbon label">Grupos</a>
-          <div class="header">Entrar no Grupo</div>
-          <div class="description">Entre em um grupo usando o link de convite.</div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <!-- Groups Main Container -->

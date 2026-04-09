@@ -777,29 +777,27 @@ function showDeleteSuccess() {
     });
 }
 
-function openDashboard(id,token) {
+function openDashboard(id, token) {
     setLocalStorageItem('currentInstance', id, 6);
     setLocalStorageItem('token', token, 6);
-    $(`#instance-card-${id}`).removeClass('hidden');
+
+    const instance = allInstances.find(inst => inst.id === id);
+    if (instance) {
+        currentInstanceData = instance; // Set global currentInstanceData
+        $('#editInstanceName').text(instance.name); // Set modal header
+    }
 
     showWidgets();
-    $('.admingrid').addClass('hidden');
-    $('.maingrid').removeClass('hidden');
-    $('.card.no-hover').addClass('hidden');
-    $(`#instance-card-${id}`).removeClass('hidden');
-    $('.adminlogin').show();
+    $('#modalEditInstance').modal('show');
 }
 
 function goBackToList() {
-    $('#instances-cards > div').addClass('hidden');
+    $('#modalEditInstance').modal('hide');
     removeLocalStorageItem('currentInstance');
     currentInstanceData = null; // Clear instance data
     updateAdmin();
     removeLocalStorageItem('token');
     hideWidgets();
-    $('.maingrid').addClass('hidden');
-    $('.admingrid').removeClass('hidden');
-    $('.adminlogin').hide();
 }
 
 async function sendTextMessage() {
