@@ -1309,9 +1309,19 @@ body.dark-theme .profile-picture {
 .ui.cards > .card .content .ui.grid {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+  align-items: center !important; /* Vertically center items in the grid */
 }
 
 .ui.cards > .card .content .ui.grid > .column {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+}
+
+.ui.cards > .card .content .ui.grid .header {
+  font-weight: bold !important;
+  color: black !important;
+}
+
+body.dark-theme .ui.cards > .card .content .ui.grid .header {
+  color: white !important;
 }
